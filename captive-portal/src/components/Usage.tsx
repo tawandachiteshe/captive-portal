@@ -23,9 +23,14 @@ export default function MyUsage() {
     const saved = localStorage.getItem('voucher_code');
     if (saved) {
       setUsername(saved);
-      fetchUsage();
     };
   }, []);
+
+  useEffect(() => {
+    if (username) {
+      fetchUsage();
+    }
+  }, [username])
 
   const fetchUsage = async () => {
     if (!username) return;
