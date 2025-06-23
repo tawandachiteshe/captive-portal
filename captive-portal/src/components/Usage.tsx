@@ -82,6 +82,21 @@ export default function MyUsage() {
           </div>
         </div>
       )}
+
+      {/* Logoff Button */}
+      <button
+        onClick={() => {
+          localStorage.removeItem('voucher_code');
+
+          // OPTIONAL: CoovaChilli logoff
+          fetch('http://192.168.182.1:3990/logoff') // Update IP/port
+            .catch(() => { });
+
+        }}
+        className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+      >
+        Logoff
+      </button>
     </div>
   );
 }
