@@ -17,6 +17,7 @@ export default function TokenCreator() {
   } | null>(null);
 
   const [plan, setPlan] = useState<{ gb: number, price: number, expireDays: number } | null>(null);
+  const [clipboard, setClipboard] = useState(false)
 
   const createToken = async (gb: number, price: number, expireDays: number) => {
     const res = await fetch("https://portal-backend.umbiro.com/vouchers", {
@@ -26,6 +27,15 @@ export default function TokenCreator() {
     });
     const data = await res.json();
     setVoucher(data);
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(voucher?.code || "");
+      setClipboard(true)
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
   };
 
   return (
@@ -57,13 +67,29 @@ export default function TokenCreator() {
         </div>
       )}
 
+
+
       {voucher && (
-        <div className="mt-6 p-4 border rounded-lg bg-green-100 text-center">
+        <div className="mt-6 p-4 border rounded-lg bg-green-100 text-center" onClick={handleCopy}>
           <h3 className="text-lg font-semibold text-green-800">Voucher Created!</h3>
-          <p className="text-2xl font-mono mt-2">{voucher.code}</p>
+          <p className="text-2xl font-mono mt-2 text-green-700">{voucher.code}</p>
           <p className="text-sm text-green-700 mt-1">{plan?.gb} GB — ${plan?.price}</p>
+          <p className="text-sm text-green-700 mt-1">Click to copy!</p>
         </div>
       )}
+
+      {
+        clipboard && (
+          <div className="bg-teal-100 border-t-4 mt-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+            <div className="flex">
+              <div className="py-1"><svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" /></svg></div>
+              <div>
+                <p className="font-bold">Copied to clipboard</p>
+              </div>
+            </div>
+          </div>
+        )
+      }
     </div>
   );
 }
