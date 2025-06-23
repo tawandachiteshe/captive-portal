@@ -1,7 +1,7 @@
-import { VoucherDashboard } from "@/components/Dashboard";
+import MyUsage from "@/components/Usage";
 
 export default function Home() {
   return (
-    <VoucherDashboard />
+    <MyUsage />
   );
 }

@@ -43,6 +43,7 @@ export function Home() {
       if (res.ok) {
         const data = await res.json();
         if (data.redirectUrl) {
+          localStorage.setItem('voucher_code', username)
           window.location.href = data.redirectUrl;
         } else {
           setError("No redirect URL received from server.");

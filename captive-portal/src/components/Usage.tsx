@@ -15,19 +15,14 @@ export default function MyUsage() {
 
   useEffect(() => {
 
-    setUsage({
-      username: 'xbeef',
-      usedData: '100GN',
-      sessionTime: 400,
-      lastSeen: '',
-    })
+    setLoading(true)
 
     // Example: get user code from localStorage or cookie
     const username = localStorage.getItem('voucher_code');
 
     if (!username) return;
 
-    fetch('/api/vouchers/my-usage', {
+    fetch('https://portal-backend.umbiro.com/my-usage?x-user' + '=' + username, {
       headers: {
         'x-user': username,
       },
@@ -35,7 +30,7 @@ export default function MyUsage() {
       .then((res) => res.json())
       .then((data) => {
         setUsage(data);
-        // setLoading(false);
+        setLoading(false);
       });
   }, []);
 
