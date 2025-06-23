@@ -17,6 +17,8 @@ export function Home() {
     setUamParams(searchParams);
   }, [searchParams]);
 
+  console.log(searchParams)
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -26,7 +28,7 @@ export function Home() {
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...uamParams, username, password }),
+        body: JSON.stringify({ ...searchParams, username, password }),
       });
 
       if (res.ok) {
