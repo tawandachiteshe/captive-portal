@@ -4,6 +4,15 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+function ErrorMessage({ message }: { message: string }) {
+  return (
+    <div className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+      <p className="font-bold">Be Warned</p>
+      <p>{message}</p>
+    </div>
+  )
+}
+
 export function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -51,6 +60,9 @@ export function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 to-indigo-600 flex items-center justify-center px-4">
+
+      {}
+
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Welcome to WiFi Portal
@@ -97,7 +109,9 @@ export function Home() {
           {error && (
             <p className="text-red-600 font-semibold text-center">{error}</p>
           )}
-
+          {searchParams.get("reason") === "reject" && (
+            <p className="text-red-600 font-semibold text-center">{"Invalid username or password"}</p>
+          )}
           <button
             type="submit"
             disabled={loading}
