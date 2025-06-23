@@ -17,7 +17,7 @@ export function Home() {
     setUamParams(searchParams);
   }, [searchParams]);
 
-  console.log(searchParams)
+  console.log(Object.fromEntries(searchParams))
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ export function Home() {
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...searchParams, username, password }),
+        body: JSON.stringify({ ...Object.fromEntries(searchParams), username, password }),
       });
 
       if (res.ok) {
