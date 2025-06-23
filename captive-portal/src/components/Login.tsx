@@ -26,6 +26,13 @@ export function Home() {
     setUamParams(searchParams);
   }, [searchParams]);
 
+  useEffect(() => {
+    if (searchParams.get("res") === "success") {
+
+      router.push("/");
+    }
+  }, [searchParams])
+
   console.log(Object.fromEntries(searchParams))
 
   const handleSubmit = async (e: any) => {
