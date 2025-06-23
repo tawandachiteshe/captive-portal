@@ -87,11 +87,8 @@ export default function MyUsage() {
       <button
         onClick={() => {
           localStorage.removeItem('voucher_code');
-
+          window.location.href = 'http://192.168.182.1:3990/logoff'
           // OPTIONAL: CoovaChilli logoff
-          fetch('http://192.168.182.1:3990/logoff') // Update IP/port
-            .catch(() => { });
-
         }}
         className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
       >
