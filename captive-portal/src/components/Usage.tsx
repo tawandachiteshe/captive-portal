@@ -8,6 +8,8 @@ type MyUsage = {
   usedData: string;
   sessionTime: number;
   lastSeen: string;
+  dataLeft: string;
+  dataCap: string;
 };
 
 export default function MyUsage() {
@@ -69,8 +71,16 @@ export default function MyUsage() {
             <span className="font-mono">{usage.username}</span>
           </div>
           <div>
+            <strong>Total Data:</strong>{' '}
+            {(parseInt(usage.dataCap) / 1024 / 1024).toFixed(2)} MB
+          </div>
+          <div>
             <strong>Data Used:</strong>{' '}
             {(parseInt(usage.usedData) / 1024 / 1024).toFixed(2)} MB
+          </div>
+          <div>
+            <strong>Data Left:</strong>{' '}
+            {(parseInt(usage.dataLeft) / 1024 / 1024).toFixed(2)} MB
           </div>
           <div>
             <strong>Session Time:</strong>{' '}
