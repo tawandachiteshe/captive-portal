@@ -62,9 +62,10 @@ export function Home() {
               htmlFor="username"
               className="block text-gray-700 font-semibold mb-1"
             >
-              Username (optional)
+              Username
             </label>
             <input
+              placeholder="voucher001"
               id="username"
               type="text"
               value={username}
@@ -80,9 +81,10 @@ export function Home() {
               htmlFor="password"
               className="block text-gray-700 font-semibold mb-1"
             >
-              Password (optional)
+              Password
             </label>
             <input
+              placeholder="pass001"
               id="password"
               type="password"
               value={password}
