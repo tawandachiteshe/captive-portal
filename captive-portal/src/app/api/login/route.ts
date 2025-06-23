@@ -25,7 +25,7 @@ export async function POST(req: Request) {
   const redirectAfterLogin = "http://www.google.com";
 
   // Build Coova-Chilli logon URL to grant access
-  const logonUrl = `http://${uamip}:${uamport}/logon?res=success&redirurl=${encodeURIComponent(
+  const logonUrl = `http://${uamip}:${uamport}/logon?challenge=${challenge}&called=${called}&mac=${mac}&ip=${ip}&url=${url}&username=${username}&password=${password}&redirurl=${encodeURIComponent(
     redirectAfterLogin
   )}`;
 
