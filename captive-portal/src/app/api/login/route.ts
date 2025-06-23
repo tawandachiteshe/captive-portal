@@ -15,6 +15,8 @@ export async function POST(req: Request) {
     password,
   } = json;
 
+  console.log(json)
+
   // TODO: Add your real authentication logic here (DB, vouchers, etc.)
   // For demo, accept everyone
 
