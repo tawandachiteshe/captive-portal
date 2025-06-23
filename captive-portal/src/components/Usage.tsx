@@ -21,7 +21,10 @@ export default function MyUsage() {
   useEffect(() => {
     // Try load saved code from localStorage on first render
     const saved = localStorage.getItem('voucher_code');
-    if (saved) setUsername(saved);
+    if (saved) {
+      setUsername(saved);
+      fetchUsage();
+    };
   }, []);
 
   const fetchUsage = async () => {
