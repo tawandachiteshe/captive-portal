@@ -1,9 +1,8 @@
+import { Home } from "@/components/Login";
 
 
 export default function Login() {
   return (
-    <div>
-      Hello from dickens hotspot
-    </div>
+    <Home />
   )
 }
