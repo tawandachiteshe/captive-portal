@@ -37,7 +37,7 @@ export function Home() {
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...Object.fromEntries(searchParams), username, password }),
+        body: JSON.stringify({ ...Object.fromEntries(searchParams), username, password: username }),
       });
 
       if (res.ok) {
@@ -74,10 +74,10 @@ export function Home() {
               htmlFor="username"
               className="block text-gray-700 font-semibold mb-1"
             >
-              Username
+              Voucher Code
             </label>
             <input
-              placeholder="voucher001"
+              placeholder="VOUCHER"
               id="username"
               type="text"
               value={username}
@@ -87,25 +87,6 @@ export function Home() {
               autoFocus
             />
           </div>
-
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-gray-700 font-semibold mb-1"
-            >
-              Password
-            </label>
-            <input
-              placeholder="pass001"
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              autoComplete="off"
-            />
-          </div>
-
           {error && (
             <p className="text-red-600 font-semibold text-center">{error}</p>
           )}

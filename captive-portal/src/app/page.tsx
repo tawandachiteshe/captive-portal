@@ -1,8 +1,7 @@
-import { Home as LoginHome } from "@/components/Login";
-import Image from "next/image";
+import { VoucherDashboard } from "@/components/Dashboard";
 
 export default function Home() {
   return (
-    <LoginHome />
+    <VoucherDashboard />
   );
 }
