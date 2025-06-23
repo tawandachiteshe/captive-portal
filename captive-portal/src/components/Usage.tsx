@@ -10,6 +10,7 @@ type MyUsage = {
   lastSeen: string;
   dataLeft: string;
   dataCap: string;
+  expiryDate: string,
 };
 
 export default function MyUsage() {
@@ -90,6 +91,11 @@ export default function MyUsage() {
             <strong>Last Seen:</strong>{' '}
             {new Date(usage.lastSeen).toLocaleString()}
           </div>
+          <div>
+            <strong>Expiry Date:</strong>{' '}
+            {new Date(usage.expiryDate).toLocaleString()}
+          </div>
+
         </div>
       )}
 
