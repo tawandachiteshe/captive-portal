@@ -1,6 +1,8 @@
 "use client"
 import { useState } from 'react';
 const plans = [
+
+  { gb: 0.4, price: 0.5, expireDays: 7 },
   { gb: 1, price: 1, expireDays: 1 },
   { gb: 2, price: 1.5, expireDays: 3 },
   { gb: 10, price: 5, expireDays: 7 },
