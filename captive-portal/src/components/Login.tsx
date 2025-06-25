@@ -33,6 +33,12 @@ export function Home() {
     }
   }, [searchParams])
 
+  useEffect(() => {
+
+    const code = localStorage.getItem('voucher_code')
+
+  }, [])
+
   console.log(Object.fromEntries(searchParams))
 
   const handleSubmit = async (e: any) => {
