@@ -36,6 +36,7 @@ export function Home() {
   useEffect(() => {
 
     const code = localStorage.getItem('voucher_code')
+    setUsername(code || "");
 
   }, [])
 
