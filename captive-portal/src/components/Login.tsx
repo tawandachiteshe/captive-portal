@@ -48,6 +48,18 @@ export function Home() {
     setError("");
 
     try {
+
+      const firstUse = await fetch("https://portal-backend.umbiro.com/check?code=" + username, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+
+      const code = await firstUse.json()
+      if (code === null) {
+        setError("Invalid voucher code.");
+        return;
+      }
+
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
