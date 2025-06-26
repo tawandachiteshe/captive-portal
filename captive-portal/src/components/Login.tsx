@@ -51,7 +51,6 @@ export function Home() {
 
       const firstUse = await fetch("https://portal-backend.umbiro.com/check?code=" + username, {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
       })
 
       const code = await firstUse.json()
