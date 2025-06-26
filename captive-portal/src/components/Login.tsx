@@ -49,18 +49,16 @@ export function Home() {
 
     try {
 
-      const firstUse = await fetch("https://portal-backend.umbiro.com/check?code=" + username, {
-        method: "GET",
-      })
+      try {
+        const firstUse = await fetch("https://portal-backend.umbiro.com/check?code=" + username, {
+          method: "GET",
+        })
 
-      const code = await firstUse.json()
-      console.log(code)
-      console.log(code === null)
-      if (code === null) {
+      } catch (err) {
         setError("Invalid voucher code.");
         return;
-      }
 
+      }
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -80,6 +78,9 @@ export function Home() {
         setError(err.error || "Login failed.");
       }
     } catch (err) {
+
+      console.log(err)
+
       setError("Network error. Try again.");
     } finally {
       setLoading(false);
