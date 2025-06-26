@@ -55,6 +55,8 @@ export function Home() {
       })
 
       const code = await firstUse.json()
+      console.log(code)
+      console.log(code === null)
       if (code === null) {
         setError("Invalid voucher code.");
         return;
